@@ -27,15 +27,15 @@ This Home Assistant integration connects your Zendure devices to Home Assistant,
   - Home Assistant Energy Dashboard
 
 - **How it works:**
-  - surfer1264 - [Power Distribution explained - simple case](https://github.com/surfer1264/Zendure-Stuff/wiki/Standard‐Betrieb-zweier-gleicher-Hubs)
-  - surfer1264 - [Power Distribution explained - complexcase](https://github.com/surfer1264/Zendure-Stuff/wiki/Lastverteilung-z‐HA-ein-komplexes-Beispiel)
-  - surfer1264 - [connection status explained - HEMS](https://github.com/surfer1264/Zendure-Stuff/wiki/Zendure-HEMS-und-zHA)
+  - surfer1264 - [Power Distribution explained - simple case](https://github.com/surfer1264/Zendure-Stuff/wiki/Standard‐Betrieb-zweier-gleicher-Hubs) :de:
+  - surfer1264 - [Power Distribution explained - complexcase](https://github.com/surfer1264/Zendure-Stuff/wiki/Lastverteilung-z‐HA-ein-komplexes-Beispiel) :de:
+  - surfer1264 - [connection status explained - HEMS](https://github.com/surfer1264/Zendure-Stuff/wiki/Zendure-HEMS-und-zHA) :de:
 
 - **Supported devices:**
   - Ace1500
   - Aio2400
   - Hyper2000
-  - Hub1200 [German](https://github.com/Zendure/Zendure-HA/wiki/SolarFlow-Hub1200-German)
+  - Hub1200 [German](https://github.com/surfer1264/Zendure-Stuff/wiki/SF1200_Entity_der_Zendure_HA_Integration) :de:
   - Hub2000
   - [SF800](https://github.com/Zendure/Zendure-HA/wiki/SolarFlow-800)
   - SF800 Pro
