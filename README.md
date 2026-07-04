@@ -22,9 +22,14 @@ This Home Assistant integration connects your Zendure devices to Home Assistant,
 - **Configuration:**
   - [Fuse Group](https://github.com/Zendure/Zendure-HA/wiki/Fuse-Group)
   - Zendure Manager
-    - [Power distribution strategy](https://github.com/Zendure/Zendure-HA/wiki/Power-distribution-strategy)
+    - **Outdated:** [Power distribution strategy](https://github.com/Zendure/Zendure-HA/wiki/Power-distribution-strategy)
   - [Local Mqtt (Legacy devices)](https://github.com/Zendure/Zendure-HA/wiki/Local-Mqtt-(Legacy-Devices))
   - Home Assistant Energy Dashboard
+
+- **How it works:**
+  - surfer1264 - [Power Distribution explained - simple case](https://github.com/surfer1264/Zendure-Stuff/wiki/Standard‐Betrieb-zweier-gleicher-Hubs)
+  - surfer1264 - [Power Distribution explained - complexcase](https://github.com/surfer1264/Zendure-Stuff/wiki/Lastverteilung-z‐HA-ein-komplexes-Beispiel)
+  - surfer1264 - [connection status explained - HEMS](https://github.com/surfer1264/Zendure-Stuff/wiki/Zendure-HEMS-und-zHA)
 
 - **Supported devices:**
   - Ace1500
