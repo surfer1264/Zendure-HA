@@ -119,7 +119,7 @@ class ZendureManager(DataUpdateCoordinator[None], EntityDevice):
                     continue
                 _LOGGER.info("Adding device: %s %s => %s", deviceId, prodModel, dev)
 
-                init = Api.createdevice.get(prodModel.lower().strip(), None)
+                init = Api.createdevice.get(prodModel.lower().replace(" ", ""), None)
                 if init is None:
                     _LOGGER.info("Device %s is not supported!", prodModel)
                     continue
