@@ -623,9 +623,12 @@ class ZendureManager(DataUpdateCoordinator[None], EntityDevice):
 
             # make sure we have devices in optimal working range
             if len(self.discharge) > 1 and i == 0 and d.state != DeviceState.SOCFULL:
-                self.pwr_low = 0 if (delta := d.discharge_start * 1.5 - pwr) <= 0 else self.pwr_low + int(delta)
-                pwr = 0 if self.pwr_low > d.discharge_optimal else pwr
-
+                # cautious fuse-group cap: thresholds never exceed what pwr_max (the active
+                # fuse-group limit) would imply; unchanged when pwr_max == hardware limit
+                dstart = min(d.discharge_start, d.pwr_max // SmartMode.DISCHARGE_START_DIVISOR) if d.pwr_max > 0 else d.discharge_start
+                doptimal = min(d.discharge_optimal, int(d.pwr_max // SmartMode.DISCHARGE_OPTIMAL_DIVISOR)) if d.pwr_max > 0 else d.discharge_optimal
+                self.pwr_low = 0 if (delta := dstart * 1.5 - pwr) <= 0 else self.pwr_low + int(delta)
+                pwr = 0 if self.pwr_low > doptimal else pwr
             setpoint -= await d.power_discharge(pwr)
             dev_start += 1 if pwr != 0 and d.electricLevel.asInt + 3 < self.idle_lvlmax else 0
 
