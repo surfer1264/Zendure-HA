@@ -126,8 +126,8 @@ class ZendureManager(DataUpdateCoordinator[None], EntityDevice):
 
                 # create the device and mqtt server
                 device = init(self.hass, deviceId, dev.get("deviceName", prodModel), dev)
-                device.discharge_start = device.discharge_limit // 10
-                device.discharge_optimal = device.discharge_limit // 4
+                device.discharge_start = device.discharge_limit // SmartMode.DISCHARGE_START_DIVISOR
+                device.discharge_optimal = device.discharge_limit // SmartMode.DISCHARGE_OPTIMAL_DIVISOR
                 Api.devices[deviceId] = device
 
                 # Check if we should automatically manage MQTT users (opt-in)
