@@ -432,6 +432,8 @@ class ZendureManager(DataUpdateCoordinator[None], EntityDevice):
             if await d.power_get():
                 # get power production
                 d.pwr_produced = min(0, d.batteryOutput.asInt + d.homeInput.asInt - d.batteryInput.asInt - d.homeOutput.asInt)
+                if d.state == DeviceState.SOCFULL and -d.solarInput.asInt < d.pwr_produced:
+                    d.pwr_produced = -d.solarInput.asInt
                 self.produced -= d.pwr_produced
 
                 # only positive pwr_offgrid must be taken into account, negative values count a solarInput
@@ -491,8 +493,8 @@ class ZendureManager(DataUpdateCoordinator[None], EntityDevice):
                     await self.power_discharge(setpoint)
 
             case ManagerMode.MATCHING_DISCHARGE:
-                # Only discharge, do nothing if setpoint is negative
-                await self.power_discharge(max(0, setpoint))
+                # Discharge to cover demand and always pass through available solar; never charge
+                await self.power_discharge(max(self.produced, setpoint))
 
             case ManagerMode.MATCHING_CHARGE | ManagerMode.STORE_SOLAR:
                 # Allow discharge of produced power in MATCHING_CHARGE-Mode, otherwise only charge
